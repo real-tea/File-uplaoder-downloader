@@ -17,10 +17,10 @@ const upload = multer({
     fileSize: 1000000 // max file size 1MB = 1000000 bytes
   },
   fileFilter(req, file, cb) {
-    if (!file.originalname.match(/\.(jpeg|jpg|png|pdf|doc|docx|xlsx|xls)$/)) {
+    if (!file.originalname.match(/\.(jpeg|jpg|png)$/)) {
       return cb(
         new Error(
-          'only upload files with jpg, jpeg, png, pdf, doc, docx, xslx, xls format.'
+          'only upload files with jpg, jpeg, png for template'
         )
       );
     }
@@ -28,12 +28,15 @@ const upload = multer({
   }
 });
 
-Router.post(
-  '/upload',
+
+Router.post('/upload',
   upload.single('file'),
   async (req, res) => {
+    // console.log(req.body);
+
     try {
-      const { title, description } = req.body;
+      const title = req.body.title
+      const  description  = req.body.description;
       const { path, mimetype } = req.file;
       const file = new File({
         title,
@@ -49,7 +52,7 @@ Router.post(
   },
   (error, req, res, next) => {
     if (error) {
-      res.status(500).send(error.message);
+      res.status(500).send(error);
     }
   }
 );
