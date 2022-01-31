@@ -2,12 +2,13 @@ import React, { useState, useRef } from 'react';
 import Dropzone from 'react-dropzone';
 import axios from 'axios';
 import { Form, Row, Col, Button } from 'react-bootstrap';
-import { API_URL } from '../utils/constants';
+// import './App.css';
+// import { API_URL } from '../utils/constants';
 
 const App = (props) => {
   const [file, setFile] = useState(null); // state for storing actual image
   const [previewSrc, setPreviewSrc] = useState(''); // state for storing previewImage
-  const [state, setState] = useState({
+  const [state, setState] = useState({ //state that stores title and description
     title: '',
     description: ''
   });
@@ -137,7 +138,7 @@ const App = (props) => {
             </div>
           )}
         </div>
-        <Button variant="primary" type="submit">
+        <Button className = "button" variant="primary" type="submit">
           Submit
         </Button>
       </Form>

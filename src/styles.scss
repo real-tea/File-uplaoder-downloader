@@ -2,11 +2,16 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  
 }
 
 body {
   letter-spacing: 1px;
   padding: 10px;
+  background-color: #FA8BFF;
+background-image: linear-gradient(90deg, #FA8BFF 0%, #2BD2FF 52%, #2BFF88 90%);
+
+  
 }
 
 h1 {
@@ -29,6 +34,8 @@ h1,
   background: #fff0f0;
   padding: 1rem;
 }
+
+
 
 .header {
   margin-bottom: 20px;
