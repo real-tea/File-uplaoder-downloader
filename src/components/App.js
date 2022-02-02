@@ -138,7 +138,7 @@ const App = (props) => {
             </div>
           )}
         </div>
-        <Button className = "button" variant="primary" type="submit">
+        <Button className = "button" type="submit">
           Submit
         </Button>
       </Form>

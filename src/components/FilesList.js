@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import download from 'downloadjs';
 import axios from 'axios';
 import { API_URL } from '../utils/constants';
+import { Button } from 'react-bootstrap';
 
 const FilesList = () => {
   const [filesList, setFilesList] = useState([]);
@@ -37,6 +38,10 @@ const FilesList = () => {
     }
   };
 
+  const EditClick = () => {
+
+  }
+
   return (
     <div className="files-container">
       {errorMsg && <p className="errorMsg">{errorMsg}</p>}
@@ -46,6 +51,7 @@ const FilesList = () => {
             <th>Title</th>
             <th>Description</th>
             <th>Download File</th>
+            <th>Edit assignment </th>
           </tr>
         </thead>
         <tbody>
@@ -65,13 +71,18 @@ const FilesList = () => {
                       Download
                     </a>
                   </td>
+                  <td>
+                  <Button className = "button" onClick = { EditClick } type="submit">
+          Edit
+        </Button>
+                  </td>
                 </tr>
               )
             )
           ) : (
             <tr>
               <td colSpan={3} style={{ fontWeight: '300' }}>
-                No files found. Please add some.
+                No Assignments found. Please add some.
               </td>
             </tr>
           )}
