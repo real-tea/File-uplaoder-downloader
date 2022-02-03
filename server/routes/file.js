@@ -17,10 +17,10 @@ const upload = multer({
     fileSize: 1000000 // max file size 1MB = 1000000 bytes
   },
   fileFilter(req, file, cb) {
-    if (!file.originalname.match(/\.(jpeg|jpg|png)$/)) {
+    if (!file.originalname.match(/\.(jpeg|jpg|png|pdf|word)$/)) {
       return cb(
         new Error(
-          'only upload files with jpg, jpeg, png for template'
+          'only upload files with jpg, jpeg, png ,pdf ,word '
         )
       );
     }
@@ -80,5 +80,16 @@ Router.get('/download/:id', async (req, res) => {
     res.status(400).send('Error while downloading file. Try again later.');
   }
 });
+ //Update a title/description
+Router.put('/update/:id',async (req , res)=>{
+  try{
+    const file = await File.findById(req.parans.id);
+  await file.updateOne({ $set : req.body });
+  res.status(200).json("updated");
+  }catch(err){
+    res.status(500).json(err);
+  }
+})
+
 
 module.exports = Router;
